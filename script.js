@@ -52,6 +52,42 @@ mobileNavigation.addEventListener("change", () => {
     setDropdownOpen(false);
 });
 
+const navigationTargets = [...navigation.querySelectorAll('a[href^="#"]')]
+    .map((link) => ({ link, target: document.getElementById(link.hash.slice(1)) }))
+    .filter(({ target }) => target);
+let navigationFrame = 0;
+
+function updateActiveNavigation() {
+    const activeLine = header.getBoundingClientRect().bottom + 24;
+    let activeLink = navigationTargets[0]?.link;
+
+    navigationTargets.forEach(({ link, target }) => {
+        if (target.getBoundingClientRect().top <= activeLine) {
+            activeLink = link;
+        }
+    });
+
+    navigation.querySelectorAll('a[aria-current="location"]').forEach((link) => {
+        link.removeAttribute("aria-current");
+    });
+    activeLink?.setAttribute("aria-current", "location");
+}
+
+function scheduleActiveNavigationUpdate() {
+    if (navigationFrame) {
+        return;
+    }
+
+    navigationFrame = window.requestAnimationFrame(() => {
+        updateActiveNavigation();
+        navigationFrame = 0;
+    });
+}
+
+window.addEventListener("scroll", scheduleActiveNavigationUpdate, { passive: true });
+window.addEventListener("resize", scheduleActiveNavigationUpdate);
+updateActiveNavigation();
+
 const videos = document.querySelectorAll("#videos video");
 const hlsMimeType = "application/vnd.apple.mpegurl";
 const hlsPlayers = new WeakMap();
@@ -182,5 +218,24 @@ if ("IntersectionObserver" in window) {
     videos.forEach((video) => {
         video.addEventListener("pointerenter", () => loadAdaptiveVideo(video), { once: true });
         video.addEventListener("focus", () => loadAdaptiveVideo(video), { once: true });
+    });
+}
+
+if (
+    "IntersectionObserver" in window &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: "0px 0px -24px 0px" });
+
+    document.querySelectorAll(".gallery-item, .video-card, #sports > div[id]").forEach((item) => {
+        item.classList.add("js-reveal");
+        revealObserver.observe(item);
     });
 }
