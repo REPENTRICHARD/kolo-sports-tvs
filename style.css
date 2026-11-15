@@ -23,7 +23,6 @@ html {
 }
 
 body {
-    min-width: 320px;
     line-height: 1.6;
 }
 
@@ -47,6 +46,18 @@ header h1 {
     color: var(--green-dark);
     font-size: clamp(1.5rem, 3vw, 2rem);
     line-height: 1.2;
+}
+
+.menu-toggle {
+    display: none;
+    padding: 8px 12px;
+    color: var(--green-dark);
+    background: var(--green-light);
+    border: 0;
+    border-radius: 8px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
 }
 
 .highlight {
@@ -81,6 +92,24 @@ footer a:focus-visible {
 
 .dropdown {
     position: relative;
+}
+
+.dropdown-heading {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-toggle {
+    display: none;
+    width: 36px;
+    height: 36px;
+    color: var(--green-dark);
+    background: var(--green-light);
+    border: 0;
+    border-radius: 8px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
 }
 
 .dropdownlist {
@@ -415,16 +444,69 @@ footer p {
     }
 
     header {
-        position: static;
+        position: sticky;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .menu-toggle {
+        display: inline-block;
+    }
+
+    header nav {
+        display: none;
+        width: 100%;
+    }
+
+    header.nav-open nav {
+        display: block;
     }
 
     nav ul {
+        flex-direction: column;
+        align-items: stretch;
         gap: 2px;
     }
 
+    nav li,
     nav a {
-        padding: 8px;
+        width: 100%;
+    }
+
+    nav ul {
+        justify-content: flex-start;
+    }
+
+    nav a {
+        padding: 9px 10px;
         font-size: 0.9rem;
+    }
+
+    .dropdownlist {
+        position: static;
+        min-width: 0;
+        padding: 0 0 0 14px;
+        box-shadow: none;
+    }
+
+    .dropdown:hover .dropdownlist,
+    .dropdown:focus-within .dropdownlist {
+        display: none;
+    }
+
+    .dropdown.is-open .dropdownlist {
+        display: block;
+    }
+
+    .dropdown-heading a {
+        flex: 1;
+    }
+
+    .dropdown-toggle {
+        display: inline-block;
     }
 
     .gallery {

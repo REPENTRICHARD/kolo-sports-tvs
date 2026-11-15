@@ -1,18 +1,28 @@
 <html>
     <head>
-<title>kolo sport tv</title>
-<link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Kolo Sport TV brings you football league coverage, analysis, news, and highlights.">
+        <title>kolo sport tv</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
     </head>
     <body>
         <header>
             <h1>Kolo Sport <span class="highlight">Tv</span></h1>
-        <nav>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="menu-toggle-label">Menu</span>
+            </button>
+        <nav id="primary-navigation">
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#gallery">Gallery</a></li>
-            <li class="dropdown"> 
-                <a href="#sports">Sports</a>
-                <ul class="dropdownlist">   
+            <li class="dropdown">
+                <div class="dropdown-heading">
+                    <a href="#sports">Sports</a>
+                    <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="sports-leagues" aria-label="Show sports leagues">+</button>
+                </div>
+                <ul class="dropdownlist" id="sports-leagues">
                         <li> <a href="#premierleague">Premier league</a></li>
                         <li> <a href="#laliga">Laliga</a></li>
                         <li> <a href="#championsleague">Champions League</a></li>
