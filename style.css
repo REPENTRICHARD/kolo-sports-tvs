@@ -24,6 +24,9 @@ html {
 
 body {
     line-height: 1.6;
+    background: linear-gradient(180deg, #f4f7f3 0%, #edf4ee 100%);
+    color: #34453b;
+    -webkit-tap-highlight-color: transparent;
 }
 
 header {
@@ -36,8 +39,9 @@ header {
     justify-content: space-between;
     gap: 24px;
     padding: 14px max(5vw, calc((100vw - 1160px) / 2));
-    background: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 8px 24px rgba(32, 72, 45, 0.08);
+    background: rgba(255, 255, 255, 0.94);
+    border-bottom: 1px solid rgba(32, 72, 45, 0.08);
+    box-shadow: 0 10px 24px rgba(32, 72, 45, 0.06);
     backdrop-filter: blur(12px);
 }
 
@@ -75,11 +79,11 @@ nav a,
 footer a {
     display: inline-block;
     padding: 9px 12px;
-    border-radius: 8px;
+    border-radius: 10px;
     color: var(--muted);
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 nav a:hover,
@@ -88,7 +92,8 @@ nav a[aria-current="location"],
 footer a:hover,
 footer a:focus-visible {
     color: var(--green-dark);
-    background-color: var(--green-light);
+    background: linear-gradient(180deg, var(--green-light), rgba(62, 123, 75, 0.12));
+    transform: translateY(-1px);
 }
 
 .dropdown {
@@ -139,9 +144,10 @@ section {
     width: min(1160px, calc(100% - 40px));
     margin: 32px auto;
     padding: clamp(22px, 4vw, 42px);
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(32, 72, 45, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 16px 34px rgba(32, 72, 45, 0.08);
     scroll-margin-top: 100px;
 }
 
@@ -161,7 +167,8 @@ section > p {
 #home {
     overflow: hidden;
     color: #fff;
-    background: radial-gradient(ellipse at top right, #518b5b 0, transparent 46%), linear-gradient(135deg, #173a25, #285b37);
+    background: radial-gradient(ellipse at top right, rgba(255, 255, 255, 0.1), transparent 42%), linear-gradient(135deg, #173a25, #285b37 55%, #20482d 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 #home h2 {
@@ -380,15 +387,16 @@ section > p {
 
 .gallery-item {
     overflow: hidden;
-    background: #f7faf6;
-    border-radius: 14px;
-    box-shadow: 0 8px 20px rgba(32, 72, 45, 0.1);
+    background: linear-gradient(180deg, #ffffff 0%, #f5faf5 100%);
+    border: 1px solid rgba(32, 72, 45, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(32, 72, 45, 0.08);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .gallery-item:hover {
     transform: translateY(-4px);
-    box-shadow: 0 14px 28px rgba(32, 72, 45, 0.16);
+    box-shadow: 0 16px 34px rgba(32, 72, 45, 0.14);
 }
 
 .gallery-item img {
@@ -425,21 +433,21 @@ section > p {
     position: relative;
     overflow: hidden;
     padding-bottom: 16px;
-    background: #fff;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbf8 100%);
     border: 1px solid rgba(62, 123, 75, 0.08);
-    border-radius: 14px;
-    box-shadow: 0 8px 20px rgba(32, 72, 45, 0.1);
+    border-radius: 18px;
+    box-shadow: 0 12px 24px rgba(32, 72, 45, 0.08);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .video-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 28px rgba(32, 72, 45, 0.12);
+    box-shadow: 0 18px 30px rgba(32, 72, 45, 0.12);
 }
 
 .video-card.featured {
     border: 1px solid rgba(62, 123, 75, 0.2);
-    box-shadow: 0 18px 30px rgba(32, 72, 45, 0.12);
+    box-shadow: 0 20px 36px rgba(32, 72, 45, 0.12);
 }
 
 .js-reveal {
@@ -527,16 +535,17 @@ section > p {
     align-items: center;
     gap: 10px 18px;
     padding: 22px;
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 8px 22px rgba(32, 72, 45, 0.08);
+    background: linear-gradient(180deg, #ffffff 0%, #f7faf7 100%);
+    border: 1px solid rgba(32, 72, 45, 0.08);
+    border-radius: 18px;
+    box-shadow: 0 12px 24px rgba(32, 72, 45, 0.08);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     scroll-margin-top: 100px;
 }
 
 #sports > div[id]:hover {
     transform: translateY(-4px);
-    box-shadow: 0 14px 28px rgba(32, 72, 45, 0.13);
+    box-shadow: 0 16px 34px rgba(32, 72, 45, 0.12);
 }
 
 #sports > div[id] img {
@@ -624,18 +633,20 @@ section > p {
 #contact input[type="submit"] {
     padding: 12px 22px;
     color: #fff;
-    background: var(--green);
+    background: linear-gradient(180deg, var(--green), var(--green-dark));
     border: 0;
     border-radius: 10px;
     font: inherit;
     font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 10px 18px rgba(32, 72, 45, 0.14);
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #contact input[type="submit"]:hover {
     transform: translateY(-2px);
-    background: var(--green-dark);
+    background: linear-gradient(180deg, var(--green-dark), #173a25);
+    box-shadow: 0 14px 22px rgba(32, 72, 45, 0.18);
 }
 
 footer {
@@ -665,6 +676,14 @@ footer p {
         justify-content: center;
     }
 
+    nav a,
+    footer a,
+    .menu-toggle,
+    .dropdown-toggle,
+    #contact input[type="submit"] {
+        transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+
     .gallery {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -675,6 +694,121 @@ footer p {
 
     #sports {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    header {
+        min-height: 72px;
+        padding: 12px 18px;
+    }
+
+    header h1 {
+        font-size: clamp(1.45rem, 2.6vw, 1.9rem);
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav ul {
+        justify-content: center;
+        gap: 4px;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        padding: 8px 10px;
+        font-size: 0.92rem;
+    }
+
+    section {
+        width: min(100% - 30px, 1160px);
+        margin: 22px auto;
+        padding: clamp(18px, 2.8vw, 30px);
+    }
+
+    .gallery {
+        gap: 16px;
+    }
+
+    .gallery-item img {
+        height: 190px;
+    }
+
+    .video-grid {
+        gap: 16px;
+    }
+
+    .video-card h3 {
+        font-size: 0.96rem;
+    }
+
+    .video-card video {
+        transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .gallery-item img,
+    .video-card video {
+        transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .gallery-item:hover img,
+    .video-card:hover video {
+        transform: scale(1.02);
+        filter: saturate(1.08);
+    }
+
+    #sports {
+        gap: 16px;
+    }
+
+    #sports > div[id] {
+        padding: 18px;
+        gap: 8px 14px;
+    }
+
+    #sports > div[id] img {
+        width: 100%;
+        height: 96px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 767px) {
+    header {
+        min-height: 70px;
+        padding: 12px 16px;
+    }
+
+    header h1 {
+        font-size: clamp(1.3rem, 3vw, 1.7rem);
+    }
+
+    nav ul {
+        gap: 2px;
+    }
+
+    nav a {
+        padding: 7px 9px;
+        font-size: 0.88rem;
+    }
+
+    section {
+        width: min(100% - 22px, 1160px);
+        margin: 18px auto;
+        padding: 18px;
+    }
+
+    .gallery-item img {
+        height: 170px;
+    }
+
+    .video-grid {
+        gap: 14px;
+    }
+
+    .video-card h3 {
+        font-size: 0.94rem;
     }
 }
 
